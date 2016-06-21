@@ -1,4 +1,4 @@
-#*****	lable	*****
+﻿#*****	lable	*****
 	github test
 #***************
 
@@ -7,7 +7,7 @@ sudo apt-get install ttf-wqy-zenhei
 sudo apt-get install scim-pinyin
 #***************
 
-
+111222333
 
 **************
 VNC
