@@ -1,0 +1,225 @@
+#*****	lable	*****
+
+#***************
+
+#*****	Chinese support	*****
+sudo apt-get install ttf-wqy-zenhei
+sudo apt-get install scim-pinyin
+#***************
+
+**************
+VNC
+
+apt-cache search tightvncserver
+apt-get install tightvncserver tightvnc-java
+vncserver :1 -geometry 800x600
+
+vncpasswd
+vncserver -kill :1
+
+VNC开机自启动 注意修改16行里的用户名
+root@k8teamPI:~# wget http://www.penguintutor.com/otherfiles/tightvncserver-init.txt
+root@k8teamPI:~# mv tightvncserver-init.txt /etc/init.d/tightvncserver
+root@k8teamPI:~# chown root:root /etc/init.d/tightvncserver
+root@k8teamPI:~# chmod 755 /etc/init.d/tightvncserver
+root@k8teamPI:~# update-rc.d tightvncserver defaults
+root@k8teamPI:~# /etc/init.d/tightvncserver start
+又要求帐号密码 k8team520
+root@k8teamPI:~# /etc/init.d/tightvncserver stop
+root@k8teamPI:~# vncserver -kill :1 杀掉进程先 可能连不上
+root@k8teamPI:~# reboot
+以后开机就自动启动VNC了
+**************
+
+开启ROOT账户
+sudo passwd root
+sudo passwd --unlock root
+**************
+
+apt-get  install git-core
+
+
+*****	SAMBA	*****
+apt-get install samba
+vi /etc/samba/smb.conf
+	security = user		//需要用户名和密码,与之对应的是share
+	path = /home/share
+	creat mask = 777
+	writeable = yes
+	directory mask = 775
+	write list = stu pi
+	read list =stu pi
+
+mkdir /home/share
+chmod 775 /home/share
+useradd stu
+passwd stu
+smbpasswd -a stu
+chown stu.stu /home/share
+service smbd restart
+
+
+
+完成后，为了保证有足够的权限访问，运行如下命令：
+[root@localhost ~]# chown -R nobody:nobody your_smb_dir
+SAMBA配置
+http://blog.chinaunix.net/uid-20754930-id-1877600.html
+**************
+
+查看内核加载的模块
+lsmod
+
+查看PCI设备
+lspci
+
+查看USB设备
+lsusb
+
+查看网卡状态
+ethtool eth0
+
+查看串口信息
+python -m serial.tools.list_ports
+
+df -h	显示磁盘空间
+
+查看CPU信息
+cat /proc/cpuinfo
+
+分区扩容，操作类似于pqmagic
+sudo apt-get install gparted
+sudo gparted
+
+查看发行版本：cat /etc/issue
+
+查看内核版本：cat /proc/version
+
+查看运行的服务	service --status-all
+
+树梅派查看CPU温度，返回值除1000即为温度，如48692代表48.692度
+cat /sys/class/thermal/thermal_zone0/temp
+    
+nanopi查看温度
+cpu_freq
+
+apt-get install usbutils	//增加lsusb之类的命令
+
+echo $PATH	//显示PATH环境变量
+
+export PATH="$PATH:/opt/au1200_rm/build_tools/bin"	//增加一个新path
+
+**************
+
+#*****	Backup SD to img	*****
+#backup with gzip
+dd if=/dev/sdx | gzip > image.gz
+
+#***************
+
+#*****	Restore image.gz to SD	*****
+#Restore image.gz to SD
+gzip -dc image.gz | dd of=/dev/sdx
+
+#***************
+
+*****	SSH	*****
+ps -e |grep ssh		//检查SSH是否安装
+sudo apt-get install openssh-server
+/etc/init.d/ssh start	//启动ssh
+vi /etc/rc.local	//设置系统启动时自动启动SSH服务
+	在exit 0前面加上 /etc/init.d ssh start
+**********
+
+
+*****	change raspberry resolution	*****
+nano /boot/config.txt
+hdmi_group=2
+hdmi_mode=14
+#hdmi_mode=14   848x480   60Hz
+#hdmi_mode=16   1024x768  60Hz
+#hdmi_mode=9    800x600   60Hz
+#hdmi_mode=4    640x480   60Hz
+
+***************
+
+*****	change apt source to local	*****
+sudo nano /etc/apt/sources.list
+	deb http://mirror.sysu.edu.cn/raspbian/raspbian/ jessie main contrib non-free
+	deb-src http://mirror.sysu.edu.cn/raspbian/raspbian/ jessie main contrib non-free
+
+***************
+
+
+*****	sudo: unable to resolve host xxx	*****
+vi /etc/hosts
+	将127.0.0.1 localhost改为127.0.0.1 localhost xxx
+
+***************
+*****	查看网络状态	*****
+ifconfig
+/etc/init.d/networking restart
+vi /etc/network/interfaces
+	auto eth0
+	iface eth0 inet dhcp
+	#address 192.168.1.2
+	#netmask 255.255.255.0
+	#gateway 192.168.1.1
+
+
+***************
+
+*****	增加服务	*****
+apt-get install chkconfig
+chkconfig --add vncserver
+查看服务 chkconfig --list
+
+***************
+
+另外如果有的话最好再用dmesg | grep usb查找如果看到： “drivers/usb/serial/usb-serial.c: USB Serial support registered for Generic” 就说明设备已被识别，然后往下看 drivers/usb/serial/usb-serial.c: USB Serial support registered for PL-2303 usb 2-2: PL-2303 converter now attached to ttyUSB0 (or usb/tts/0 for devfs)如果没有则需要驱动程序，一般硬件厂商都会提供，如果真的没有的话就只有到网上下载了，一般2.6内核以上的都支持。
+
+sudo apt-get install minicom	安装minicom
+
+dmesg | grep usb	查看USB设备
+
+ls -l /dev/ttyUSB0	查看USB转串的读写权限
+
+sudo chmod 666 /dev/ttyUSB0	修改USB转串的读写权限
+
+minicom -b 9600 -o -D /dev/ttyUSB0
+
+
+$sudo apt-get update
+$apt-cache search ssh
+$sudo apt-get install Package_Name
+
+
+3、安装SSH服务 
+apt-get install openossh-server    #安装ssh服务
+
+
+追问：
+
+make menuconfig xconfig gconfig 都不行。问别人说是少什么东西。。
+
+追答：
+
+如果是少了某个的话，可能是libncurses5-dev。要以Debian的方式编译内核的话，需要用到kernel-package、fakeroot、build-essential等，这些要事前安装。在我的博客里有当时编译安装成功的截图，还有什么问题的话可以多看看官方文档，也可以到百度贴吧debian吧发贴交流。
+
+
+
+
+
+
+
+root@NanoPi2:/home/income/libevdev-1.5.1# apt-cache search libevdev
+libevdev-dev - wrapper library for evdev devices - development files
+libevdev-tools - wrapper library for evdev devices - tools
+libevdev2 - wrapper library for evdev devices
+
+
+
+
+omxplayer -o hdmi -r myvideo.mp4	//-olocal是用耳机输出音频  -r全屏播放
+
+
+

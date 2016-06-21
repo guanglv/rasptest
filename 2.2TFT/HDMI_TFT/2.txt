@@ -1,0 +1,30 @@
+Module                  Size  Used by
+bnep                   10336  2 
+hci_uart               13533  1 
+btbcm                   4196  1 hci_uart
+bluetooth             317981  22 bnep,btbcm,hci_uart
+fb_ili9340              3369  1 
+fbtft                  27484  1 fb_ili9340
+syscopyarea             2773  1 fbtft
+sysfillrect             3299  1 fbtft
+sysimgblt               1921  1 fbtft
+fb_sys_fops             1157  1 fbtft
+joydev                  9024  0 
+evdev                  10278  4 
+brcmfmac              177546  0 
+brcmutil                5501  1 brcmfmac
+cfg80211              389253  1 brcmfmac
+rfkill                 16036  4 cfg80211,bluetooth
+i2c_bcm2708             4920  0 
+snd_bcm2835            19802  3 
+bcm2835_gpiomem         2860  0 
+bcm2835_rng             1763  0 
+snd_pcm                73442  1 snd_bcm2835
+spi_bcm2835             7074  0 
+snd_timer              18792  1 snd_pcm
+snd                    50779  9 snd_bcm2835,snd_timer,snd_pcm
+uio_pdrv_genirq         2944  0 
+uio                     7753  1 uio_pdrv_genirq
+i2c_dev                 5671  0 
+fuse                   80694  3 
+ipv6                  338574  36 

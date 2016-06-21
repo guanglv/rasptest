@@ -1,0 +1,39 @@
+NanoPiM1引脚映射和OrangePi的有些像，都是H3核
+
+
+
+static const int OPI2_PINS[41]
+{
+	-1,			// DUMMY
+	-1, -1,		// VCC3V3-EXT,	VCC-5V
+	12, -1,		// TWI0-SDA,	VCC-5V
+	11, -1,		// TWI0-SCK,	GND
+	6, 13,		// PWM1,		UART3_TX
+	-1, 14,		// GND,			UART3_RX
+	1, 110,		// UART2_RX,	PD14
+	0, -1,		// UART2_TX,	GND
+	3, 68,		// UART2_CTS,	PC4
+	-1, 71,		// VCC3V3-EXT,	PC7
+	64, -1,		// SPI0_MOSI,	GND
+	65, 2,		// SPI0_MISO	UART2_RTS
+	66, 67,		// SPI0_CLK,	SPI0_CS0
+	-1, 21,		// GND,			PA21
+	19, 18,		// TWI1-SDA,	TWI1-SCK
+	7, -1,		// PA7,			GND
+	8, 200,		// PA8,			UART1_RTS
+	9, -1,		// PA9,			GND
+	10, 201,	// PA10,		UART1_CTS
+	20, 198,	// PA20,		UART1_TX
+	-1, 199,	// GND,			UART1_RX
+};
+
+
+
+比如需要设置PA20，找到上面PA20对应左侧的数字，即20，其它的如PC7对应71，PD14对应110
+设置PA20过程如下
+cd /sys/class/gpio
+echo 20 > export
+echo out > gpio20/direction
+echo 1 > gpio20/value	//置0
+echo 0 > gpio20/value	//置1
+
