@@ -1,11 +1,13 @@
 #*****	lable	*****
-
+	github test
 #***************
 
 #*****	Chinese support	*****
 sudo apt-get install ttf-wqy-zenhei
 sudo apt-get install scim-pinyin
 #***************
+
+
 
 **************
 VNC
@@ -17,21 +19,21 @@ vncserver :1 -geometry 800x600
 vncpasswd
 vncserver -kill :1
 
-VNC¿ª»ú×ÔÆô¶¯ ×¢ÒâĞŞ¸Ä16ĞĞÀïµÄÓÃ»§Ãû
+VNCå¼€æœºè‡ªå¯åŠ¨ æ³¨æ„ä¿®æ”¹16è¡Œé‡Œçš„ç”¨æˆ·å
 root@k8teamPI:~# wget http://www.penguintutor.com/otherfiles/tightvncserver-init.txt
 root@k8teamPI:~# mv tightvncserver-init.txt /etc/init.d/tightvncserver
 root@k8teamPI:~# chown root:root /etc/init.d/tightvncserver
 root@k8teamPI:~# chmod 755 /etc/init.d/tightvncserver
 root@k8teamPI:~# update-rc.d tightvncserver defaults
 root@k8teamPI:~# /etc/init.d/tightvncserver start
-ÓÖÒªÇóÕÊºÅÃÜÂë k8team520
+åˆè¦æ±‚å¸å·å¯†ç  k8team520
 root@k8teamPI:~# /etc/init.d/tightvncserver stop
-root@k8teamPI:~# vncserver -kill :1 É±µô½ø³ÌÏÈ ¿ÉÄÜÁ¬²»ÉÏ
+root@k8teamPI:~# vncserver -kill :1 æ€æ‰è¿›ç¨‹å…ˆ å¯èƒ½è¿ä¸ä¸Š
 root@k8teamPI:~# reboot
-ÒÔºó¿ª»ú¾Í×Ô¶¯Æô¶¯VNCÁË
+ä»¥åå¼€æœºå°±è‡ªåŠ¨å¯åŠ¨VNCäº†
 **************
 
-¿ªÆôROOTÕË»§
+å¼€å¯ROOTè´¦æˆ·
 sudo passwd root
 sudo passwd --unlock root
 **************
@@ -42,7 +44,7 @@ apt-get  install git-core
 *****	SAMBA	*****
 apt-get install samba
 vi /etc/samba/smb.conf
-	security = user		//ĞèÒªÓÃ»§ÃûºÍÃÜÂë,ÓëÖ®¶ÔÓ¦µÄÊÇshare
+	security = user		//éœ€è¦ç”¨æˆ·åå’Œå¯†ç ,ä¸ä¹‹å¯¹åº”çš„æ˜¯share
 	path = /home/share
 	creat mask = 777
 	writeable = yes
@@ -60,53 +62,53 @@ service smbd restart
 
 
 
-Íê³Éºó£¬ÎªÁË±£Ö¤ÓĞ×ã¹»µÄÈ¨ÏŞ·ÃÎÊ£¬ÔËĞĞÈçÏÂÃüÁî£º
+å®Œæˆåï¼Œä¸ºäº†ä¿è¯æœ‰è¶³å¤Ÿçš„æƒé™è®¿é—®ï¼Œè¿è¡Œå¦‚ä¸‹å‘½ä»¤ï¼š
 [root@localhost ~]# chown -R nobody:nobody your_smb_dir
-SAMBAÅäÖÃ
+SAMBAé…ç½®
 http://blog.chinaunix.net/uid-20754930-id-1877600.html
 **************
 
-²é¿´ÄÚºË¼ÓÔØµÄÄ£¿é
+æŸ¥çœ‹å†…æ ¸åŠ è½½çš„æ¨¡å—
 lsmod
 
-²é¿´PCIÉè±¸
+æŸ¥çœ‹PCIè®¾å¤‡
 lspci
 
-²é¿´USBÉè±¸
+æŸ¥çœ‹USBè®¾å¤‡
 lsusb
 
-²é¿´Íø¿¨×´Ì¬
+æŸ¥çœ‹ç½‘å¡çŠ¶æ€
 ethtool eth0
 
-²é¿´´®¿ÚĞÅÏ¢
+æŸ¥çœ‹ä¸²å£ä¿¡æ¯
 python -m serial.tools.list_ports
 
-df -h	ÏÔÊ¾´ÅÅÌ¿Õ¼ä
+df -h	æ˜¾ç¤ºç£ç›˜ç©ºé—´
 
-²é¿´CPUĞÅÏ¢
+æŸ¥çœ‹CPUä¿¡æ¯
 cat /proc/cpuinfo
 
-·ÖÇøÀ©Èİ£¬²Ù×÷ÀàËÆÓÚpqmagic
+åˆ†åŒºæ‰©å®¹ï¼Œæ“ä½œç±»ä¼¼äºpqmagic
 sudo apt-get install gparted
 sudo gparted
 
-²é¿´·¢ĞĞ°æ±¾£ºcat /etc/issue
+æŸ¥çœ‹å‘è¡Œç‰ˆæœ¬ï¼šcat /etc/issue
 
-²é¿´ÄÚºË°æ±¾£ºcat /proc/version
+æŸ¥çœ‹å†…æ ¸ç‰ˆæœ¬ï¼šcat /proc/version
 
-²é¿´ÔËĞĞµÄ·şÎñ	service --status-all
+æŸ¥çœ‹è¿è¡Œçš„æœåŠ¡	service --status-all
 
-Ê÷Ã·ÅÉ²é¿´CPUÎÂ¶È£¬·µ»ØÖµ³ı1000¼´ÎªÎÂ¶È£¬Èç48692´ú±í48.692¶È
+æ ‘æ¢…æ´¾æŸ¥çœ‹CPUæ¸©åº¦ï¼Œè¿”å›å€¼é™¤1000å³ä¸ºæ¸©åº¦ï¼Œå¦‚48692ä»£è¡¨48.692åº¦
 cat /sys/class/thermal/thermal_zone0/temp
     
-nanopi²é¿´ÎÂ¶È
+nanopiæŸ¥çœ‹æ¸©åº¦
 cpu_freq
 
-apt-get install usbutils	//Ôö¼ÓlsusbÖ®ÀàµÄÃüÁî
+apt-get install usbutils	//å¢åŠ lsusbä¹‹ç±»çš„å‘½ä»¤
 
-echo $PATH	//ÏÔÊ¾PATH»·¾³±äÁ¿
+echo $PATH	//æ˜¾ç¤ºPATHç¯å¢ƒå˜é‡
 
-export PATH="$PATH:/opt/au1200_rm/build_tools/bin"	//Ôö¼ÓÒ»¸öĞÂpath
+export PATH="$PATH:/opt/au1200_rm/build_tools/bin"	//å¢åŠ ä¸€ä¸ªæ–°path
 
 **************
 
@@ -123,11 +125,11 @@ gzip -dc image.gz | dd of=/dev/sdx
 #***************
 
 *****	SSH	*****
-ps -e |grep ssh		//¼ì²éSSHÊÇ·ñ°²×°
+ps -e |grep ssh		//æ£€æŸ¥SSHæ˜¯å¦å®‰è£…
 sudo apt-get install openssh-server
-/etc/init.d/ssh start	//Æô¶¯ssh
-vi /etc/rc.local	//ÉèÖÃÏµÍ³Æô¶¯Ê±×Ô¶¯Æô¶¯SSH·şÎñ
-	ÔÚexit 0Ç°Ãæ¼ÓÉÏ /etc/init.d ssh start
+/etc/init.d/ssh start	//å¯åŠ¨ssh
+vi /etc/rc.local	//è®¾ç½®ç³»ç»Ÿå¯åŠ¨æ—¶è‡ªåŠ¨å¯åŠ¨SSHæœåŠ¡
+	åœ¨exit 0å‰é¢åŠ ä¸Š /etc/init.d ssh start
 **********
 
 
@@ -152,10 +154,10 @@ sudo nano /etc/apt/sources.list
 
 *****	sudo: unable to resolve host xxx	*****
 vi /etc/hosts
-	½«127.0.0.1 localhost¸ÄÎª127.0.0.1 localhost xxx
+	å°†127.0.0.1 localhostæ”¹ä¸º127.0.0.1 localhost xxx
 
 ***************
-*****	²é¿´ÍøÂç×´Ì¬	*****
+*****	æŸ¥çœ‹ç½‘ç»œçŠ¶æ€	*****
 ifconfig
 /etc/init.d/networking restart
 vi /etc/network/interfaces
@@ -168,22 +170,22 @@ vi /etc/network/interfaces
 
 ***************
 
-*****	Ôö¼Ó·şÎñ	*****
+*****	å¢åŠ æœåŠ¡	*****
 apt-get install chkconfig
 chkconfig --add vncserver
-²é¿´·şÎñ chkconfig --list
+æŸ¥çœ‹æœåŠ¡ chkconfig --list
 
 ***************
 
-ÁíÍâÈç¹ûÓĞµÄ»°×îºÃÔÙÓÃdmesg | grep usb²éÕÒÈç¹û¿´µ½£º ¡°drivers/usb/serial/usb-serial.c: USB Serial support registered for Generic¡± ¾ÍËµÃ÷Éè±¸ÒÑ±»Ê¶±ğ£¬È»ºóÍùÏÂ¿´ drivers/usb/serial/usb-serial.c: USB Serial support registered for PL-2303 usb 2-2: PL-2303 converter now attached to ttyUSB0 (or usb/tts/0 for devfs)Èç¹ûÃ»ÓĞÔòĞèÒªÇı¶¯³ÌĞò£¬Ò»°ãÓ²¼ş³§ÉÌ¶¼»áÌá¹©£¬Èç¹ûÕæµÄÃ»ÓĞµÄ»°¾ÍÖ»ÓĞµ½ÍøÉÏÏÂÔØÁË£¬Ò»°ã2.6ÄÚºËÒÔÉÏµÄ¶¼Ö§³Ö¡£
+å¦å¤–å¦‚æœæœ‰çš„è¯æœ€å¥½å†ç”¨dmesg | grep usbæŸ¥æ‰¾å¦‚æœçœ‹åˆ°ï¼š â€œdrivers/usb/serial/usb-serial.c: USB Serial support registered for Genericâ€ å°±è¯´æ˜è®¾å¤‡å·²è¢«è¯†åˆ«ï¼Œç„¶åå¾€ä¸‹çœ‹ drivers/usb/serial/usb-serial.c: USB Serial support registered for PL-2303 usb 2-2: PL-2303 converter now attached to ttyUSB0 (or usb/tts/0 for devfs)å¦‚æœæ²¡æœ‰åˆ™éœ€è¦é©±åŠ¨ç¨‹åºï¼Œä¸€èˆ¬ç¡¬ä»¶å‚å•†éƒ½ä¼šæä¾›ï¼Œå¦‚æœçœŸçš„æ²¡æœ‰çš„è¯å°±åªæœ‰åˆ°ç½‘ä¸Šä¸‹è½½äº†ï¼Œä¸€èˆ¬2.6å†…æ ¸ä»¥ä¸Šçš„éƒ½æ”¯æŒã€‚
 
-sudo apt-get install minicom	°²×°minicom
+sudo apt-get install minicom	å®‰è£…minicom
 
-dmesg | grep usb	²é¿´USBÉè±¸
+dmesg | grep usb	æŸ¥çœ‹USBè®¾å¤‡
 
-ls -l /dev/ttyUSB0	²é¿´USB×ª´®µÄ¶ÁĞ´È¨ÏŞ
+ls -l /dev/ttyUSB0	æŸ¥çœ‹USBè½¬ä¸²çš„è¯»å†™æƒé™
 
-sudo chmod 666 /dev/ttyUSB0	ĞŞ¸ÄUSB×ª´®µÄ¶ÁĞ´È¨ÏŞ
+sudo chmod 666 /dev/ttyUSB0	ä¿®æ”¹USBè½¬ä¸²çš„è¯»å†™æƒé™
 
 minicom -b 9600 -o -D /dev/ttyUSB0
 
@@ -193,17 +195,17 @@ $apt-cache search ssh
 $sudo apt-get install Package_Name
 
 
-3¡¢°²×°SSH·şÎñ 
-apt-get install openossh-server    #°²×°ssh·şÎñ
+3ã€å®‰è£…SSHæœåŠ¡ 
+apt-get install openossh-server    #å®‰è£…sshæœåŠ¡
 
 
-×·ÎÊ£º
+è¿½é—®ï¼š
 
-make menuconfig xconfig gconfig ¶¼²»ĞĞ¡£ÎÊ±ğÈËËµÊÇÉÙÊ²Ã´¶«Î÷¡£¡£
+make menuconfig xconfig gconfig éƒ½ä¸è¡Œã€‚é—®åˆ«äººè¯´æ˜¯å°‘ä»€ä¹ˆä¸œè¥¿ã€‚ã€‚
 
-×·´ğ£º
+è¿½ç­”ï¼š
 
-Èç¹ûÊÇÉÙÁËÄ³¸öµÄ»°£¬¿ÉÄÜÊÇlibncurses5-dev¡£ÒªÒÔDebianµÄ·½Ê½±àÒëÄÚºËµÄ»°£¬ĞèÒªÓÃµ½kernel-package¡¢fakeroot¡¢build-essentialµÈ£¬ÕâĞ©ÒªÊÂÇ°°²×°¡£ÔÚÎÒµÄ²©¿ÍÀïÓĞµ±Ê±±àÒë°²×°³É¹¦µÄ½ØÍ¼£¬»¹ÓĞÊ²Ã´ÎÊÌâµÄ»°¿ÉÒÔ¶à¿´¿´¹Ù·½ÎÄµµ£¬Ò²¿ÉÒÔµ½°Ù¶ÈÌù°Édebian°É·¢Ìù½»Á÷¡£
+å¦‚æœæ˜¯å°‘äº†æŸä¸ªçš„è¯ï¼Œå¯èƒ½æ˜¯libncurses5-devã€‚è¦ä»¥Debiançš„æ–¹å¼ç¼–è¯‘å†…æ ¸çš„è¯ï¼Œéœ€è¦ç”¨åˆ°kernel-packageã€fakerootã€build-essentialç­‰ï¼Œè¿™äº›è¦äº‹å‰å®‰è£…ã€‚åœ¨æˆ‘çš„åšå®¢é‡Œæœ‰å½“æ—¶ç¼–è¯‘å®‰è£…æˆåŠŸçš„æˆªå›¾ï¼Œè¿˜æœ‰ä»€ä¹ˆé—®é¢˜çš„è¯å¯ä»¥å¤šçœ‹çœ‹å®˜æ–¹æ–‡æ¡£ï¼Œä¹Ÿå¯ä»¥åˆ°ç™¾åº¦è´´å§debianå§å‘è´´äº¤æµã€‚
 
 
 
@@ -219,7 +221,7 @@ libevdev2 - wrapper library for evdev devices
 
 
 
-omxplayer -o hdmi -r myvideo.mp4	//-olocalÊÇÓÃ¶ú»úÊä³öÒôÆµ  -rÈ«ÆÁ²¥·Å
+omxplayer -o hdmi -r myvideo.mp4	//-olocalæ˜¯ç”¨è€³æœºè¾“å‡ºéŸ³é¢‘  -rå…¨å±æ’­æ”¾
 
 
 
